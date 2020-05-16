@@ -1,0 +1,21 @@
+.adminmain {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr 100vh;
+}
+
+.toolbar {
+    grid-column-start: 1;
+    grid-column-end:3;
+    height: 5rem;
+}
+
+.sidebar {
+    grid-column: 1;
+    resize: horizontal;
+    overflow: hidden;
+}
+
+.maincontent {
+    grid-column: 2;
+}
