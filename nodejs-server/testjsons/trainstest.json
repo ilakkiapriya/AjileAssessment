@@ -1,0 +1,22 @@
+{
+    "trainName": "Train1",
+    "trainDesc": "Train1 description",
+    "trainOwner": "Train1 Owner",
+    "teams": [
+            {
+              "teamName": "Team1a" ,
+            "teamDesc": "Team1a description",
+            "teamOwner" : "Team1a Owner"
+            },
+            {
+              "teamName": "Team1b" ,
+            "teamDesc": "Team1b desbcription",
+            "teamOwner" : "Team1b Owner"
+            },
+            {
+              "teamName": "Team1c" ,
+            "teamDesc": "Team1c description",
+            "teamOwner" : "Team1c Owner"
+            }
+        ]
+  }
