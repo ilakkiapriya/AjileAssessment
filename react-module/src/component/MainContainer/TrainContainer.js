@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 export default function TrainContainer() {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Trains', field: 'trains' },
+      { title: 'Trains', field: 'trains',render: rowData => <Link to={`/${rowData.trains}`}>{rowData.trains}</Link> },
       { title: 'Teams', field: 'teams' },
       { title: 'TeamOwner', field: 'teamowner'},
       { title: 'No. Of Associates', field: 'noofassociates'}

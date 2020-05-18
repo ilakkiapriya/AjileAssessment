@@ -4,7 +4,7 @@ import TrainContainer from './TrainContainer'
 import './MainContainer.css'
 import Telecom from './Telecom'
 import SurveyQc from '../Sidebar/Questionnaire/SurveyQc'
-import AddingNewQues from "../Sidebar/Questionnaire/AddingNewQues";
+import Add from "../Sidebar/Questionnaire/Add";
 
 
 function MainContainer() {
@@ -16,7 +16,7 @@ function MainContainer() {
             <Route path="/trains" component={TrainContainer} />
             <Route path="/telecom" component={Telecom}/>
             <Route path="/questionnaire" component={SurveyQc}/>
-            <Route path="/add" component={AddingNewQues}/>
+            <Route path="/add" component={Add}/>
         </Switch>
       </div>
 

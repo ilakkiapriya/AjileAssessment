@@ -2,8 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import AddIcon from '@material-ui/icons/Add'
-import InputLabel from '@material-ui/core/InputLabel';
-import { render } from '@testing-library/react';
+import NewQues from './NewQues';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   
 const handleClick = () => (
     <div classes="questextbox">
-         <input type="text" />
+         <NewQues/>
     </div>
 )
 
