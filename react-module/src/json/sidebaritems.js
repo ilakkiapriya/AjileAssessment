@@ -1,12 +1,12 @@
 import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
-import AssessmentIcon from "@material-ui/icons/Assessment";
 import HomeIcon from "@material-ui/icons/Home";
 import PersonIcon from "@material-ui/icons/Person";
 import GroupIcon from "@material-ui/icons/Group";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 export  const sidebaritems =  [
-    { name: "home", label: "Home",path: "/home", Icon: HomeIcon },
     {
       name: "trains",
       label: "Train",
@@ -49,23 +49,13 @@ export  const sidebaritems =  [
       ]
     },
     {
-      name: "reports",
-      label: "Reports",
-      path: "/Reports",
-      Icon: AssessmentIcon,
-      items: [
-        { name: "profile", label: "Profile" },
-        { name: "teams", label: "Teams" }
-      ]
-    },
-    {
       name: "questionnaire",
       label: "Questionnaire",
       path: "/Questionnaire",
       Icon: QuestionAnswerIcon,
       items: [
-        { name: "add", label: "Add" },
-        { name: "view", label: "View"}
+        { name: "view", label: "View",Icon: VisibilityIcon},
+        { name: "add", label: "Add",Icon: PlaylistAddIcon}
       ]
     }
 ]

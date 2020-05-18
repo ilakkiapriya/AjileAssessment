@@ -61,7 +61,10 @@ export default function TrainContainer() {
             }, 600);
           }),
       }}
-      onRowClick={<Link to={`/${state.data.trains}`}>{state.data.trains}</Link>}
+      options={{
+        exportButton: true
+      }}
+      onCellClick={<Link to={`/${state.data.trains}`}>{state.data.trains}</Link>}
     />
   );
 }
