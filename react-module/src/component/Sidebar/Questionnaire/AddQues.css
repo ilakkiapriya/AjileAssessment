@@ -1,0 +1,11 @@
+.addbutton {
+    background-color: royalblue;
+    font-size: 15px;
+    border-radius: 8px;
+    padding: 12px 30px;
+}
+
+.addbutton:hover {
+    background-color: silver;
+    color: white;
+  }

@@ -9,7 +9,7 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 export  const sidebaritems =  [
     {
       name: "trains",
-      label: "Train",
+      label: "Trains",
       path: "/trains",
       Icon: GroupIcon,
       items: [
