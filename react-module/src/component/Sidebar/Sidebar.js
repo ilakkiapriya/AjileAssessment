@@ -7,8 +7,13 @@ import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import Collapse from "@material-ui/core/Collapse";
 import {Link}from 'react-router-dom';
 import '../Sidebar/Sidebar.css'
-
-
+import FiberManualRecordOutlinedIcon from "@material-ui/icons/FiberManualRecordOutlined";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
+import HomeIcon from "@material-ui/icons/Home";
+import PersonIcon from "@material-ui/icons/Person";
+import GroupIcon from "@material-ui/icons/Group";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
   const [collapsed, setCollapsed] = React.useState(true);
@@ -84,12 +89,55 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
   );
 }
 
+function transformInputJsonToSidebarSpecific(items) {
+  var newitems = [];
+  var trainitems = {
+    name: "trains", label: "Trains",  path: "/trains", Icon: GroupIcon,  
+    items: []
+  };
+
+  for (const i in items) {
+    var trainitem = {};
+    trainitem.name = items[i].trainName;
+    trainitem.label = items[i].trainName;
+    trainitem.path = '/' + items[i].trainName;
+    trainitem.Icon =  FiberManualRecordOutlinedIcon;
+    trainitem.items = [];
+    trainitems.items.push(trainitem);
+    for ( const j in items[i].teams ) {
+      var origteam = items[i].teams[j];
+      var teamitem = {};
+      teamitem.name = origteam.teamName;
+      teamitem.label = origteam.teamName;
+      teamitem.path = '/' + origteam.teamName;
+      teamitem.Icon =  PersonIcon;
+      trainitem.items.push(teamitem);
+    }
+  }
+
+  var questionitems = {
+    name: "questionnaire", label: "Questionnaire", path: "/Questionnaire",  Icon: QuestionAnswerIcon,
+    items: [
+      { name: "view", label: "View",Icon: VisibilityIcon},
+      { name: "add", label: "Add",Icon: PlaylistAddIcon}
+    ]
+  };
+
+  newitems.push(trainitems);
+  newitems.push(questionitems);
+
+  return newitems;
+}
+
 function Sidebar ({items, depthStep, depth, expanded}) {
+
+  var newitems =transformInputJsonToSidebarSpecific(items);
+
   return (
     
     <div className="sidebar">
       <List disablePadding dense >
-        {items.map((sidebarItem, index) => (
+        {newitems.map((sidebarItem, index) => (
           <React.Fragment key={`${sidebarItem.name}${index}`}>
             {sidebarItem === "divider" ? (
               <Divider style={{ margin: "6px 0" }} />

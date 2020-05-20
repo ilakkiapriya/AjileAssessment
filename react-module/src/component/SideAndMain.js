@@ -1,7 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar/Sidebar'
 import MainContainer from './MainContainer/MainContainer'
-import {sidebaritems} from '../json/sidebaritems'
 import './Admin.css'
 
 
@@ -25,9 +24,9 @@ class SideAndMain extends React.Component {
     render() {
         
     console.log(this.state.sidebaritems);
-    return (  
+    return (
         <div className="sideandmain"> 
-            <Sidebar items={/*this.state.sidebaritems*/sidebaritems}/> 
+            <Sidebar items={this.state.sidebaritems/*sidebaritems*/}/> 
             <MainContainer/>
         </div>
 
