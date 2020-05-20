@@ -27,7 +27,7 @@ class SideAndMain extends React.Component {
     return (
         <div className="sideandmain"> 
             <Sidebar items={this.state.sidebaritems/*sidebaritems*/}/> 
-            <MainContainer/>
+            <MainContainer items={this.state.sidebaritems}/>
         </div>
 
     );

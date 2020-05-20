@@ -2,21 +2,14 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 
-export default function TrainContainer() {
+export default function TrainContainer({items}) {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Trains', field: 'trains',render: rowData => <Link to={`/${rowData.trains}`}>{rowData.trains}</Link> },
-      { title: 'Teams', field: 'teams' },
-      { title: 'TeamOwner', field: 'teamowner'},
-      { title: 'No. Of Associates', field: 'noofassociates'}
+      { title: 'Train Name', field: 'trainName',render: rowData => <Link to={`/${rowData.trainName}`}>{rowData.trainName}</Link> },
+      { title: 'Train Description', field: 'trainDesc' },
+      { title: 'Train Owner', field: 'trainOwner'}
     ],
-    data: [
-      { trains: 'Telecom', teams: 'Vodafone', teamowner: "A", noofassociates: 25 },
-      { trains: 'Telecom', teams: 'Bell', teamowner: "B", noofassociates: 25 },
-      { trains: 'Bank', teams: 'Bofa', teamowner: "C", noofassociates: 25 },
-      { trains: 'Bank', teams: 'TD', teamowner: "D", noofassociates: 25 }
-     ,
-    ],
+    data: [],
   });
 
   return (

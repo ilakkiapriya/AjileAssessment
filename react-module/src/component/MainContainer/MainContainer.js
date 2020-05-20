@@ -7,7 +7,7 @@ import SurveyQc from '../Sidebar/Questionnaire/SurveyQc'
 import AddQues from "../Sidebar/Questionnaire/AddQues";
 
 
-function MainContainer() {
+function MainContainer({items}) {
  
   return (
       <div className="maincontent" >
