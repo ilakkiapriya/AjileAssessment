@@ -8,26 +8,31 @@ class SideAndMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            sidebaritems: []
+            trainitems: []
         }
+        this.updateTrainStateOnChange = this.updateTrainStateOnChange.bind(this);
+    }
+
+    updateTrainStateOnChange (inputtrainItems)  {
+        this.setState({ trainitems: inputtrainItems });
     }
 
  componentDidMount() {
     fetch('http://localhost:3001/trains')
         .then(res => res.json())
         .then((data) => {
-          this.setState({ sidebaritems: data })
+          this.setState({ trainitems: data })
         })
         .catch(console.log)
     }
 
     render() {
         
-    console.log(this.state.sidebaritems);
+    console.log(this.state.trainitems);
     return (
         <div className="sideandmain"> 
-            <Sidebar items={this.state.sidebaritems/*sidebaritems*/}/> 
-            <MainContainer items={this.state.sidebaritems}/>
+            <Sidebar items={this.state.trainitems}/> 
+            <MainContainer items={this.state.trainitems} onChange={this.updateTrainStateOnChange}/>
         </div>
 
     );

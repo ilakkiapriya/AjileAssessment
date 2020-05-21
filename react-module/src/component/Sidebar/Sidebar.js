@@ -89,7 +89,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
   );
 }
 
-function transformInputJsonToSidebarSpecific(items) {
+function transformDataToUIModel(items) {
   var newitems = [];
   var trainitems = {
     name: "trains", label: "Trains",  path: "/trains", Icon: GroupIcon,  
@@ -131,7 +131,7 @@ function transformInputJsonToSidebarSpecific(items) {
 
 function Sidebar ({items, depthStep, depth, expanded}) {
 
-  var newitems =transformInputJsonToSidebarSpecific(items);
+  var newitems =transformDataToUIModel(items);
 
   return (
     

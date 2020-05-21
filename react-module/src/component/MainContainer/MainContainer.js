@@ -7,13 +7,13 @@ import SurveyQc from '../Sidebar/Questionnaire/SurveyQc'
 import AddQues from "../Sidebar/Questionnaire/AddQues";
 
 
-function MainContainer({items}) {
+function MainContainer({items, onChange}) {
  
   return (
       <div className="maincontent" >
         <Switch>
-            <Route exact path="/" component={TrainContainer} />
-            <Route path="/trains" component={TrainContainer} />
+            <Route exact path="/" component={ props => (<TrainContainer propitems={items} onChange={onChange}/>)} />
+            <Route path="/trains" component={ props => (<TrainContainer propitems={items}  onChange={onChange}/>)} />
             <Route path="/telecom" component={Telecom}/>
             <Route path="/questionnaire" component={SurveyQc}/>
             <Route path="/add" component={AddQues}/>
