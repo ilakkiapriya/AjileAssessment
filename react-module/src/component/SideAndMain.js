@@ -13,9 +13,24 @@ class SideAndMain extends React.Component {
         this.updateTrainStateOnChange = this.updateTrainStateOnChange.bind(this);
     }
 
-    updateTrainStateOnChange (inputtrainItems)  {
-        this.setState({ trainitems: inputtrainItems });
+    updateTrainStateOnChange (newTrainModelItem)  {
+        console.log("Going to update new train " , newTrainModelItem);
+        const requestOptions = {
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json' },
+            body: JSON.stringify(newTrainModelItem)
+        };
+        fetch('http://localhost:3001/trains', requestOptions)
+        .then(res => res.json())
+        .then((data) => {
+            console.log("Post is successfully sent and response is received ", data);
+           var newTrainItems = this.state.trainitems;
+           newTrainItems.push(data);
+          this.setState({ trainitems: newTrainItems });
+        })
+        .catch(console.log)
     }
+
 
  componentDidMount() {
     fetch('http://localhost:3001/trains')

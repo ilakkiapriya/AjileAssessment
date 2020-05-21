@@ -17,4 +17,4 @@ mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },() =>
    console.log('Connected to DB');
 });
 
-app.listen(3001);
+app.listen(3001, '0.0.0.0');

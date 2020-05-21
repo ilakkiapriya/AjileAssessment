@@ -35,7 +35,7 @@ Trainrouter.post('/trains', (req,res) => {
 
     train.save().then(data => {res.json(data);}).catch( err => {res.json({message: err});
     });
-    console.log(req.body);
+    console.log("POST is completed on the server" , req.body);
 });
 
 module.exports = Trainrouter;

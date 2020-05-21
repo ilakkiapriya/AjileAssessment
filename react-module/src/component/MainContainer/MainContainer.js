@@ -8,13 +8,14 @@ import AddQues from "../Sidebar/Questionnaire/AddQues";
 
 
 function MainContainer({items, onChange}) {
- 
+  /*
+  <Route path="/trains/:trainName"  component={ props => (<TeamContainer propitems={items}  onChange={onChange}/>)} />
+  */
   return (
       <div className="maincontent" >
         <Switch>
             <Route exact path="/" component={ props => (<TrainContainer propitems={items} onChange={onChange}/>)} />
-            <Route path="/trains" component={ props => (<TrainContainer propitems={items}  onChange={onChange}/>)} />
-            <Route path="/telecom" component={Telecom}/>
+            <Route path="/trains" component={ props => (<TrainContainer propitems={items}  onChange={onChange}/>)} />           
             <Route path="/questionnaire" component={SurveyQc}/>
             <Route path="/add" component={AddQues}/>
         </Switch>

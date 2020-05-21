@@ -2,34 +2,34 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 
-export default function TrainContainer({propitems ,  onChange}) {
+export default function TeamContainer({propitems ,  onChange}) {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Train Name', field: 'trainName',render: rowData => <Link to={`/${rowData.trainName}`}>{rowData.trainName}</Link> },
-      { title: 'Train Description', field: 'trainDesc' },
-      { title: 'Train Owner', field: 'trainOwner'}
+      { title: 'Team Name', field: 'teamName',render: rowData => <Link to={`/${rowData.teamName}`}>{rowData.teamName}</Link> },
+      { title: 'Team Description', field: 'teamDesc' },
+      { title: 'Team Owner', field: 'teamOwner'}
     ]
   });
 
   function transformDataToUIModel() {
-    var trainRows = [];
+    var teamRows = [];
     for (const i in propitems) {
-      var trainRow = {};
-      trainRow.trainName = propitems[i].trainName;
-      trainRow.trainDesc = propitems[i].trainDesc;
-      trainRow.trainOwner = propitems[i].trainOwner;
-      trainRows.push(trainRow);
+      var teamRow = {};
+      teamRow.trainName = propitems[i].teamName;
+      teamRow.trainDesc = propitems[i].teamDesc;
+      teamRow.trainOwner = propitems[i].teamOwner;
+      teamRows.push(teamRow);
     }
-    return trainRows;
+    return teamRows;
   }  
 
-  var trainRows=transformDataToUIModel();
+  var teamRows=transformDataToUIModel();
 
   return (
     <MaterialTable
       title="Trains"
       columns={state.columns}
-      data={trainRows}
+      data={teamRows}
       editable = {{
         onRowAdd: (newData) => 
         new Promise((resolve) => {
