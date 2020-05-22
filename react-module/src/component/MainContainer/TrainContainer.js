@@ -2,45 +2,35 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 
-export default function TrainContainer({propitems ,  onChange}) {
+export default function TrainContainer({propitems , onAdd, onChange}) {
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Train Name', field: 'trainName',render: rowData => <Link to={`/${rowData.trainName}`}>{rowData.trainName}</Link> },
+      { title: 'Train Name', field: 'trainName',render: rowData => <Link to={`/trains/${rowData.trainName}`}>{rowData.trainName}</Link> },
       { title: 'Train Description', field: 'trainDesc' },
       { title: 'Train Owner', field: 'trainOwner'}
     ]
   });
 
-  function transformDataToUIModel() {
-    var trainRows = [];
-    for (const i in propitems) {
-      var trainRow = {};
-      trainRow.trainName = propitems[i].trainName;
-      trainRow.trainDesc = propitems[i].trainDesc;
-      trainRow.trainOwner = propitems[i].trainOwner;
-      trainRows.push(trainRow);
-    }
-    return trainRows;
-  }  
-
-  var trainRows=transformDataToUIModel();
-
   return (
     <MaterialTable
       title="Trains"
       columns={state.columns}
-      data={trainRows}
+      data={propitems}
       editable = {{
         onRowAdd: (newData) => 
+        new Promise((resolve) => {
+          setTimeout( () => {
+              resolve();
+              onAdd(newData);
+          }, 600);
+        }),
+        onRowUpdate: (newData) => 
         new Promise((resolve) => {
           setTimeout( () => {
               resolve();
               onChange(newData);
           }, 600);
         }),
-        onRowUpdate: (newData) => {
-          console.log(newData);
-        },
         onRowDelete: (newData) => {
           console.log(newData);
         }

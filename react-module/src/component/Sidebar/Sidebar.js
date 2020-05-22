@@ -17,7 +17,7 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
 function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
   const [collapsed, setCollapsed] = React.useState(true);
-  const {label, name, items, Icon, onClick: onClickProp } = item;
+  const {label, name, items, Icon, path, onClick: onClickProp } = item;
   function toggleCollapse() {
     setCollapsed(prevValue => !prevValue);
   }
@@ -60,7 +60,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
         >
           {Icon && <Icon className="sidebar-item-icon" fontSize="small" />}
           <div className="sidebar-item-text" >
-          <Link to={`/${name}`}>{label}
+          <Link to={`${path}`}>{label}
           </Link>
           </div>
         </div>
@@ -100,7 +100,7 @@ function transformDataToUIModel(items) {
     var trainitem = {};
     trainitem.name = items[i].trainName;
     trainitem.label = items[i].trainName;
-    trainitem.path = '/' + items[i].trainName;
+    trainitem.path = '/trains/' + items[i].trainName;
     trainitem.Icon =  FiberManualRecordOutlinedIcon;
     trainitem.items = [];
     trainitems.items.push(trainitem);
