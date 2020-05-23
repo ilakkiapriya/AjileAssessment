@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //import routers
-const trainrouter = require('./routes/trainrouter');
+const trainrouter = require('./routes/Trainrouter');
 app.use("/", trainrouter);
  
 mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },() =>
