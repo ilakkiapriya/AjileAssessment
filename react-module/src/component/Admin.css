@@ -1,17 +1,3 @@
-.adminmain {
-}
-
 .toolbar {
     display: flex;
-}
-
-.sidebar {
-}
-
-.maincontent {
-}
-
-.sideandmain {
-    display: flex;
-    flex-direction: row;
 }
