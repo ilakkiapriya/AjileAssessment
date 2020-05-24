@@ -1,3 +1,10 @@
+.adminmain {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .toolbar {
     display: flex;
+    height: 4rem;
 }

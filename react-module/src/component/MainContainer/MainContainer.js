@@ -74,6 +74,7 @@ fetch('http://localhost:3001/trains')
 render() {
   return (
       <div className="maincontent" >
+        
         <Switch>
             <Route path="/trains/:trainName"  component={ props => (<TeamContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
             <Route path="/trains" component={ props => (<NestedTrainContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />           
