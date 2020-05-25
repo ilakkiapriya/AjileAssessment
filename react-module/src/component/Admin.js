@@ -9,8 +9,8 @@ class Admin extends React.Component {
     render() {
     return (  
         <div className="adminmain"> 
-            <div className="toolbar"><Toolbar /></div>
-            <div><MainContainer /></div>
+            <div className="toolbar"><Toolbar/></div>
+            <MainContainer />
         </div>
 
     );

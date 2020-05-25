@@ -55,24 +55,6 @@ Trainrouter.patch('/trains/:trainId', async (req,res) => {
         res.json({message: err});
     }
 })
-/*
-Trainrouter.patch('/trains/:trainId', (req,res) => {
-      var train = new TrainsModel ({
-            trainName: req.body.trainName,
-            trainDesc: req.body.trainDesc,
-            trainOwner: req.body.trainOwner,
-            teams: req.body.teams
-        });
-        delete train._id;
-        var query = {'trainName': req.body.trainName};
 
-        TrainsModel.findOneAndUpdate(query, train, {upsert: true, new: true}, function(err, data) {
-            if (err) return res.send(500, {error: err});
-            return res.json(data);            
-        });
-        
-    console.log("Patch is completed on the server" , req.body);
-});
-*/
 
 module.exports = Trainrouter;

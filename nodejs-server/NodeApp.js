@@ -10,7 +10,11 @@ app.use(bodyParser.json());
 
 //import routers
 const trainrouter = require('./routes/Trainrouter');
+const questionrouter = require('./routes/Questionrouter');
+
 app.use("/", trainrouter);
+app.use("/questions", questionrouter);
+
  
 mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },() =>
 {
