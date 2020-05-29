@@ -1,13 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import TrainContainer from './TrainContainer'
+import { Route, Switch } from 'react-router-dom';
 import NestedTrainContainer from './NestedTrainContainer'
 import TeamContainer from './TeamContainer'
 import './MainContainer.css'
-import SurveyQc from '../Sidebar/Questionnaire/SurveyQc'
 import AddQues from "../Sidebar/Questionnaire/AddQues";
 import QuestionSetupContainer from './QuestionSetupContainer';
-
+import AllTeamContainer from './AllTeamContainer'
 class MainContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -78,7 +76,8 @@ render() {
       <div className="maincontent" >
         
         <Switch>
-            <Route path="/trains/:trainName"  component={ props => (<TeamContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
+            <Route path="/trains/:trainName/:teamName"  component={ props => (<TeamContainer />)} />
+            <Route path="/trains/:trainName"  component={ props => (<AllTeamContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
             <Route path="/trains" component={ props => (<NestedTrainContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
             <Route path="/questions" component={ props => (<QuestionSetupContainer/>)} />
             <Route path="/add" component={AddQues}/>

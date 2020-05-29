@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 
-export default function TrainContainer({propitems , onAdd, onChange}) {
+export default function AllTrainContainer({propitems , onAdd, onChange}) {
   const [state, setState] = React.useState({
     columns: [
       { title: 'Train Name', field: 'trainName',render: rowData => <Link to={`/trains/${rowData.trainName}`}>{rowData.trainName}</Link> },

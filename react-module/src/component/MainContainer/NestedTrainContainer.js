@@ -3,14 +3,23 @@ import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 
 export default function NestedTrainContainer({propitems , onAdd, onChange}) {
+  const [selectedRow,setSelectedRow] = React.useState(null);
   const [state, setState] = React.useState({
     columns: [
-      { title: 'Name', field: 'name',render: rowData => <Link to={`/trains/${rowData.name}`}>{rowData.name}</Link> },
+      { title: 'Name', field: 'name',render: rowData => getRowLink(rowData) },
       { title: 'Description', field: 'desc' },
       { title: 'Owner', field: 'owner'}
     ]
   });
 
+  function getRowLink(rowData) {
+    if (rowData.hasOwnProperty("parentName")) {
+      return <Link to={`/trains/${rowData.parentName}/${rowData.name}`}>{rowData.name}</Link>;
+    } else {
+      return <Link to={`/trains/${rowData.name}`}>{rowData.name}</Link>;
+    }
+  }
+  
   function transformModelToUI() {
       var ttrows = [];
       for ( const i in propitems ) {
@@ -27,6 +36,7 @@ export default function NestedTrainContainer({propitems , onAdd, onChange}) {
           teamrow.desc = propitems[i].teams[j].teamDesc;
           teamrow.owner = propitems[i].teams[j].teamOwner;
           teamrow.parent_id = trainrow.id;
+          teamrow.parentName = trainrow.name;
           ttrows.push(teamrow);
         }
       }
@@ -60,9 +70,13 @@ export default function NestedTrainContainer({propitems , onAdd, onChange}) {
           console.log(newData);
         }
       }}
+      onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
       options={{
         exportButton: true, 
-        actionsColumnIndex: -1
+        actionsColumnIndex: -1,
+        rowStyle: rowData => ({
+          backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'
+        })
       }}
     />
   );
