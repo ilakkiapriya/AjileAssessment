@@ -26,7 +26,7 @@ class AddQues extends Component {
     }
     render() {
         return(
-            <div className="quesAdder">
+            <div className="container">
                 <h2>Questions Adder</h2>
                 
                 <button className="addbutton" type="button" onClick={(e)=>this.addQuestion(e)}>
