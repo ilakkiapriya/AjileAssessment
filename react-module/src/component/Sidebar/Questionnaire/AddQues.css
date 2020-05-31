@@ -1,3 +1,8 @@
+.container {
+    padding: 1rem;
+    margin: 1rem;
+}
+
 .addbutton {
     background-color: royalblue;
     font-size: 15px;
