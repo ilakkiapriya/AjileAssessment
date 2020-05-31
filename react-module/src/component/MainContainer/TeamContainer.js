@@ -31,12 +31,13 @@ export default function TeamContainer({propitems , match,  onAdd, onChange}) {
   function transformDataToUIModel() {
     var trainRow = {};
     for (const i in propitems) {
-      if ( propitems[i].trainName === params.trainName ) {
-        trainRow = propitems[i];
+      var keyval=params.trainName + "__" + params.teamName;
+      if ( propitems[i].trainTeamVal === keyval ) {
+        teamRow = propitems[i];
       }
     }
-    console.log("Team data is " , trainRow)
-    return trainRow;
+    console.log("Team data is " , teamRow)
+    return teamRow;
   }
   function getBreadCrumbs() {
     var breadcrumbs = [];
@@ -44,21 +45,22 @@ export default function TeamContainer({propitems , match,  onAdd, onChange}) {
     breadcrumbs.push({"name": params.teamName, "iconval": GroupIcon});
     return breadcrumbs;
   }
-  var trainRow=transformDataToUIModel();
+  //var teamRow=transformDataToUIModel();
+  var teamRow={};
   const bcprops = getBreadCrumbs();
   return (
     <div>
     <AgileBreadCrumbs bcprops={bcprops}/>
     <MaterialTable
       columns={state.columns}
-      data={trainRow.teams}
+      data={teamRow.allAssociates}
       editable = {{
         onRowAdd: (newData) => 
         new Promise((resolve) => {
           setTimeout( () => {
               resolve();
-              trainRow.teams.push(newData);
-              onChange(trainRow, {"teams":trainRow.teams});
+              teamRow.allAssociates.push(newData);
+              onChange(teamRow, {"allAssociates":teamRow.allAssociates});
           }, 600);
         }),
         onRowUpdate: (newData) => {

@@ -3,8 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import NestedTrainContainer from './NestedTrainContainer'
 import TeamContainer from './TeamContainer'
 import './MainContainer.css'
-import AddQues from "../Sidebar/Questionnaire/AddQues";
-import QuestionSetupContainer from './QuestionSetupContainer';
+import AllQuestions from './AllQuestions';
 import AllTeamContainer from './AllTeamContainer'
 class MainContainer extends React.Component {
   constructor(props) {
@@ -72,6 +71,12 @@ fetch('http://localhost:3001/trains')
 render() {
     //            
 
+    /*
+                <Route path="/questions" component={ props => (<QuestionSetupContainer/>)} />
+            <Route path="/add" component={AddQues}/>
+
+    */
+
   return (
       <div className="maincontent" >
         
@@ -79,8 +84,7 @@ render() {
             <Route path="/trains/:trainName/:teamName"  component={ props => (<TeamContainer />)} />
             <Route path="/trains/:trainName"  component={ props => (<AllTeamContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
             <Route path="/trains" component={ props => (<NestedTrainContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
-            <Route path="/questions" component={ props => (<QuestionSetupContainer/>)} />
-            <Route path="/add" component={AddQues}/>
+            <Route path="/questions" component={ props => (<AllQuestions/>)} />
             <Route exact path="/" component={ props => (<NestedTrainContainer propitems={this.state.trainitems}  onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
         </Switch>
       </div>

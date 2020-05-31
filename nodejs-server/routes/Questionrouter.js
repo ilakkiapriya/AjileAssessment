@@ -2,7 +2,7 @@ const express = require('express');
 const Questionrouter = express.Router();
 const QuestionCollection = require('../models/QuestionCollection');
 
-Questionrouter.get('/questions', async (req,res) => {
+Questionrouter.get('/', async (req,res) => {
     console.log("GET on questions is received on the server" , req.body);
     try {
         const allQuestions = await QuestionCollection.find();
@@ -13,22 +13,19 @@ Questionrouter.get('/questions', async (req,res) => {
     }
 });
 
-Questionrouter.get('/questions/:roleId', async (req, res) => {
+Questionrouter.get('/:taggedTo', async (req, res) => {
     try {
-        const questions = await QuestionCollection.findById(req.params.roleId);
+        const questions = await QuestionCollection.findById(req.params.taggedTo);
         res.json(questions);
     } catch (err) {
         res.json({message:err});
     }
 });
 
-Questionrouter.post('/questions', (req,res) => {
+Questionrouter.post('/', (req,res) => {
     console.log("POST on questions is received on the server" , req.body);
 
-    const question = new QuestionCollection ({
-        roleName :  req.body.roleName,
-        questions : req.body.questions
-      });
+    const question = new QuestionCollection (req.body);
             
       question.save().then(data => {res.json(data);}).catch( err => {res.json({message: err});
         });
@@ -36,10 +33,10 @@ Questionrouter.post('/questions', (req,res) => {
     console.log("POST is completed on the server" , req.body);
 });
 
-Questionrouter.patch('/questions/:roleId', async (req,res) => {
+Questionrouter.patch('/:questionId', async (req,res) => {
     try {
         console.log("Request body is " + req.body);
-        const updateRole = await QuestionCollection.updateOne( { _id: req.params.roleId}, 
+        const updateRole = await QuestionCollection.updateOne( { _id: req.params.questionId}, 
         { $set: req.body }
         );
         res.json(updateRole);
