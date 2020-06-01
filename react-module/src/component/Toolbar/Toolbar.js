@@ -56,18 +56,12 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [questionAnchorEl, setQuestionAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const isQuestionMenuOpen = Boolean(questionAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
-  };
-
-  const handleQuestionnaireMenuOpen = (event) => {
-    setQuestionAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -76,7 +70,6 @@ export default function PrimarySearchAppBar() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
-    setQuestionAnchorEl(null);
     handleMobileMenuClose();
   };
 
@@ -101,27 +94,6 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
-  const questionMenuId = 'primary-question-menu';
-  const renderQuestionnaireMenu = (
-    <Menu
-      anchorEl={questionAnchorEl}
-      getContentAnchorEl={null}
-      anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      id={questionMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-      open={isQuestionMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/view">View</Link> 
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/add">Add</Link>
-      </MenuItem>
-    </Menu>
-  );
-
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -140,7 +112,7 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Home</p>
       </MenuItem>
-      <MenuItem onClick={handleQuestionnaireMenuOpen}>
+      <MenuItem >
         <IconButton 
         color="inherit"
         aria-label="questions"
@@ -177,14 +149,7 @@ export default function PrimarySearchAppBar() {
             <IconButton >
               <Link to="/"> <HomeIcon style={{ color: grey[50] }}/></Link>
             </IconButton>
-            <IconButton 
-              color="inherit"
-              edge="end"
-              aria-label="questions"
-              aria-controls={questionMenuId}
-              aria-haspopup="true"
-              onClick={handleQuestionnaireMenuOpen}
-             >
+            <IconButton>
               <Link to="/questions"><QuestionAnswerIcon style={{ color: grey[50] }}/></Link>
             </IconButton>
             <IconButton
@@ -213,7 +178,6 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-      {renderQuestionnaireMenu}
     </div>
   );
 }

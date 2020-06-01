@@ -28,10 +28,11 @@ class AddQues extends Component {
         return(
             <div className="container">
                 <h2>Questions Adder</h2>
-                
+                <div className="addcontainer">
                 <button className="addbutton" type="button" onClick={(e)=>this.addQuestion(e)}>
                     + Add Questions
                 </button>
+                </div>
                 {
                     this.state.questions.map((question,index)=>{
                         return(
