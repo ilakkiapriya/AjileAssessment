@@ -14,6 +14,17 @@ import {Link} from 'react-router-dom';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import ViewListIcon from '@material-ui/icons/ViewList';
 import { grey } from '@material-ui/core/colors';
+import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: '#3f4d67'
+      },
+    },
+  }
+});
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -137,6 +148,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
+    <ThemeProvider theme={theme}>
     <div className={classes.grow}>
       <AppBar >
         <Toolbar>
@@ -179,5 +191,6 @@ export default function PrimarySearchAppBar() {
       {renderMobileMenu}
       {renderMenu}
     </div>
+    </ThemeProvider>
   );
 }
