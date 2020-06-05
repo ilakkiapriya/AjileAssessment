@@ -1,5 +1,4 @@
 import React, { useState, Component }  from 'react'
-import './AddQues.css'
 import {Form} from 'react-bootstrap'
 
 class AddQues extends React.Component {
@@ -58,31 +57,20 @@ class AddQues extends React.Component {
     handleChange(e) {
         console.log("handleChange",e.target.value);
         if(e.target.value === "Rating") {
-            return(
-            <Form.Group controlId="exampleForm.ControlSelect2">
-                <Form.Label>Rate Description</Form.Label>
-                    <Form.Control as="select" multiple>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </Form.Control>
-            </Form.Group>
-            )
-        } else {
-            return (<Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-          </Form.Group>
-
-            )
-        }
-
-      
+            var newitems = [];
+            var i;
+            for (i = 1; i < 6; i++) {
+                newitems.push( {
+                    controlId: "ratedesc"+i,
+                    label: "Level "+i +" description",
+                    type: "text",
+                    pholder: "Description"
+                })
+            }
+            this.setState(prevState => ({
+                questionitems: prevState.questionitems.concat(newitems)
+                }));    
+            }  
     }
     getFormItems() {
         const items = this.state.questionitems.map((item) => {
