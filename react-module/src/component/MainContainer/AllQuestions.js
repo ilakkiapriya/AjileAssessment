@@ -9,6 +9,7 @@ class AllQuestions extends React.Component {
     this.state = {
         questionitems: []
     }
+    this.addQuestionsOnSave = this.addQuestionsOnSave.bind(this);
   }
 
   componentDidMount() {
@@ -21,9 +22,27 @@ class AllQuestions extends React.Component {
         .catch(console.log);
   }
 
+  addQuestionsOnSave (newQuestionModelItem)  {
+    console.log("Going to update Questions " , newQuestionModelItem);
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json' },
+        body: JSON.stringify(newQuestionModelItem)
+    };
+    fetch('http://localhost:3001/questions', requestOptions)
+    .then(res => res.json())
+    .then((data) => {
+        console.log("Post is successfully sent and response is received ", data);
+       var newQuestionItems = this.state.questionitems;
+       newQuestionItems.push(data);
+       this.setState({ questionitems: newQuestionItems });
+    })
+    .catch(console.log)
+}
+
   render() {
         return (
-          <div><QuestionsTabs questionItems={this.state.questionitems}/></div>
+          <div><QuestionsTabs questionItems={this.state.questionitems} onAdd= {this.addQuestionsOnSave}/></div>
         );
   }
 }

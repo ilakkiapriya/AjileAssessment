@@ -121,7 +121,7 @@ export default function PrimarySearchAppBar() {
         <IconButton color="inherit">
             <HomeIcon /> 
         </IconButton>
-        <p>Home</p>
+        Home
       </MenuItem>
       <MenuItem >
         <IconButton 
@@ -131,7 +131,7 @@ export default function PrimarySearchAppBar() {
         aria-haspopup="true">
             <Link to="/questions"><QuestionAnswerIcon /></Link>
         </IconButton>
-        <p>Questionnaire</p>
+        Questionnaire
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -142,7 +142,7 @@ export default function PrimarySearchAppBar() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        Profile
       </MenuItem>
     </Menu>
   );

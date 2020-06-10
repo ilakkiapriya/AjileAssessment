@@ -8,7 +8,8 @@ const QuestionSchema = mongoose.Schema({
     rateMax: Number,
     rateDescription: [String],
     parentTag: String,
-    taggedTo:[String]
+    taggedTo:[String],
+    ceremonyType: String
 });
 
 

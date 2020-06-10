@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function QuestionsTabs({questionItems}) {
+export default function QuestionsTabs({questionItems, onAdd}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -106,7 +106,7 @@ var rolequestions = transformDataToUIModel();
         </StyledTabs>
       </div>
       <TabPanel value={value} index={0}>
-           <RoleTab rolequestion={rolequestions}/>
+           <RoleTab rolequestion={rolequestions} onAdd={onAdd}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
             Ceremony based question
