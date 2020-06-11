@@ -1,7 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import AddQues from '../Sidebar/Questionnaire/AddQues';
+import AddQues from './AddQues';
 import Button from '@material-ui/core/Button'
 
 
@@ -56,8 +56,6 @@ export default function RoleTab({rolequestion, onAdd}) {
 
   const [open, setOpen] = React.useState(false); 
 
-  const[showComponent, setShowComponent] = React.useState(false); 
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -84,7 +82,6 @@ export default function RoleTab({rolequestion, onAdd}) {
       roletbRows.push(rolebasedRow);
     }
     return roletbRows;
-    //console.log("roletbRows",roletbRows);
   }
 
   
@@ -104,7 +101,7 @@ export default function RoleTab({rolequestion, onAdd}) {
         );
       }
     }}
-      title="Assessment Questions"
+      title="Assessment Questions Based on Roles"
       
       columns={state.columns}
       data={roletbRows}

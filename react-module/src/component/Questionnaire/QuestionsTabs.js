@@ -6,6 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import RoleTab from './RoleTab';
+import CeremonyTab from './CeremonyTab';
 
 
 
@@ -83,7 +84,7 @@ export default function QuestionsTabs({questionItems, onAdd}) {
   };
   console.log("roledata data is " , questionItems);
 
-function transformDataToUIModel() {
+function transformDataToUIModelForRoleQues() {
   var rolequestion =[];
   for (const i in questionItems) {
     var roleparentag = "Role/Level Based";
@@ -94,7 +95,19 @@ function transformDataToUIModel() {
   return rolequestion;
 }
 
-var rolequestions = transformDataToUIModel();
+function transformDataToUIModelForCeremonyQues() {
+  var ceremonyquestion =[];
+  for (const i in questionItems) {
+    var ceremonyparentag = "Ceremony Based";
+    if ( questionItems[i].parentTag === ceremonyparentag ) {
+      ceremonyquestion.push(questionItems[i]);
+    }
+  }
+  return ceremonyquestion;
+}
+
+var rolequestions = transformDataToUIModelForRoleQues();
+var ceremonyquestions = transformDataToUIModelForCeremonyQues();
 
   return (
     <div className={classes.root}>
@@ -109,7 +122,7 @@ var rolequestions = transformDataToUIModel();
            <RoleTab rolequestion={rolequestions} onAdd={onAdd}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-            Ceremony based question
+        <CeremonyTab ceremonyquestion={ceremonyquestions}/>
         </TabPanel>
     </div>
   );

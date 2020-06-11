@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import NestedTrainContainer from './NestedTrainContainer'
 import AssociateContainer from './AssociateContainer'
 import './MainContainer.css'
-import AllQuestions from "./AllQuestions";
+import AllQuestions from "../Questionnaire/AllQuestions";
 import AllTeamContainer from './AllTeamContainer'
 class MainContainer extends React.Component {
   constructor(props) {
