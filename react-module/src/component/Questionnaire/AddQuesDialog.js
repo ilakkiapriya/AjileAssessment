@@ -19,7 +19,7 @@ function PaperComponent(props) {
     );
 };
   
-class AddQues extends React.Component {
+class AddQuesDialog extends React.Component {
 
     /*
     parentTag: String,
@@ -74,6 +74,7 @@ class AddQues extends React.Component {
     
 
     handleChange(e) {
+        console.log("Event target value",e.target.value );
         if(e.target.value === "Rating") {
             var newitems = [];
             var i;
@@ -87,8 +88,13 @@ class AddQues extends React.Component {
             }
             this.setState(prevState => ({
                 questionitems: prevState.questionitems.concat(newitems)
-                }));    
-            }  
+            }));    
+        } else if (e.target.value === "Text") {
+            var newitems = [];
+            this.setState(prevState => ({
+                questionitems: prevState.questionitems.concat(newitems)
+            })); 
+        }
     }
     getFormItems() {
         const items = this.state.questionitems.map((item) => {
@@ -207,5 +213,5 @@ class AddQues extends React.Component {
     }
 }
 
-export default AddQues;
+export default AddQuesDialog;
 

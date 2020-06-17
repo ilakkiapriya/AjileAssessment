@@ -1,10 +1,22 @@
 import React from 'react';
 import MaterialTable from 'material-table';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 import { useParams} from "react-router";
 import AgileBreadCrumbs from './AgileBreadCrumbs'
 import TrainIcon from '@material-ui/icons/Train';
 import GroupIcon from '@material-ui/icons/Group';
+
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      elevation2: {
+        boxShadow: 'none'
+      },
+    },
+  },
+});
 
 export default function AssociateContainer() {
   let params = useParams();
@@ -15,16 +27,7 @@ export default function AssociateContainer() {
       { title: 'Emp Name', field: 'empName' },
       { title: 'Emp Id ', field: 'empId' },
       { title: 'Emp EmailId', field: 'empEmailId'},
-      { title: 'Role', field: 'roleName', render: rowData =>{
-        return(<>
-          <select>
-            <option>Select a role</option>
-            <option value="developer">Developer</option>
-            <option value="manager">Manager</option>
-            <option value="tester">Tester</option>
-          </select>
-        </>
-         ) }}
+      { title: 'Role', field: 'roleName'}
     ],
     associaterows: []
   });
@@ -78,6 +81,7 @@ export default function AssociateContainer() {
   return (
     <div>
     <AgileBreadCrumbs bcprops={bcprops}/>
+    <ThemeProvider theme={theme}>
     <MaterialTable
       columns={state.columns}
       data={state.associaterows}
@@ -100,9 +104,11 @@ export default function AssociateContainer() {
       }}
       options={{
         exportButton: true,
-        showTitle: false
+        showTitle: false,
+        paging: false
       }}
     />
+    </ThemeProvider>
         </div>
   );
 }

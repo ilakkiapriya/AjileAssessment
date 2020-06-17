@@ -12,10 +12,12 @@ app.use(bodyParser.json());
 const trainrouter = require('./routes/Trainrouter');
 const questionrouter = require('./routes/Questionrouter');
 const associaterouter = require('./routes/Associaterouter');
+const eventrouter = require('./routes/Eventrouter');
 
 app.use("/", trainrouter);
 app.use("/questions", questionrouter);
 app.use("/associates", associaterouter);
+app.use("/events",eventrouter);
 
  
 mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },() =>

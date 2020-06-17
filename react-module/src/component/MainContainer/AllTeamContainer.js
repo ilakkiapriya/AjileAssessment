@@ -4,7 +4,17 @@ import {Link} from 'react-router-dom';
 import { useParams} from "react-router";
 import AgileBreadCrumbs from './AgileBreadCrumbs'
 import TrainIcon from '@material-ui/icons/Train';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      elevation2: {
+        boxShadow: 'none'
+      },
+    },
+  },
+});
 
 export default function AllTeamContainer({propitems , match,  onAdd, onChange}) {
   const [state, setState] = React.useState({
@@ -40,6 +50,7 @@ export default function AllTeamContainer({propitems , match,  onAdd, onChange}) 
   return (
     <div>
     <AgileBreadCrumbs bcprops={bcprops}/>
+    <ThemeProvider theme={theme}>
     <MaterialTable
       columns={state.columns}
       data={trainRow.teams}
@@ -61,9 +72,11 @@ export default function AllTeamContainer({propitems , match,  onAdd, onChange}) 
       }}
       options={{
         exportButton: true,
-        showTitle: false
+        showTitle: false,
+        paging: false
       }}
     />
+    </ThemeProvider>
     </div>
   );
 }

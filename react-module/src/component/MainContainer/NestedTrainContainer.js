@@ -1,6 +1,17 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      elevation2: {
+        boxShadow: 'none'
+      },
+    },
+  },
+});
 
 export default function NestedTrainContainer({propitems , onAdd, onChange}) {
   const [selectedRow,setSelectedRow] = React.useState(null);
@@ -46,6 +57,7 @@ export default function NestedTrainContainer({propitems , onAdd, onChange}) {
   var ttrows = transformModelToUI();
 
   return (
+    <ThemeProvider theme={theme}>
     <MaterialTable
       title="Trains"
       columns={state.columns}
@@ -72,12 +84,14 @@ export default function NestedTrainContainer({propitems , onAdd, onChange}) {
       }}
       onRowClick={((evt, selectedRow) => setSelectedRow(selectedRow.tableData.id))}
       options={{
-        exportButton: true, 
+        exportButton: true,
+        paging: false,
         actionsColumnIndex: -1,
         rowStyle: rowData => ({
           backgroundColor: (selectedRow === rowData.tableData.id) ? '#EEE' : '#FFF'
         })
       }}
     />
+    </ThemeProvider>
   );
 }

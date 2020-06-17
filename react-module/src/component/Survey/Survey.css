@@ -1,0 +1,11 @@
+.mysurveyform {
+    border: 1px solid #3f4d67;
+    border-radius: 5px;
+    padding: 1.5rem;
+}
+
+.surveyResultText {
+    border: 1px solid #3f4d67;
+    border-radius: 5px;
+    padding: 1.5rem;
+}

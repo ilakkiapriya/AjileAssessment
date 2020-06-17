@@ -11,8 +11,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {Link} from 'react-router-dom';
-import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import ViewListIcon from '@material-ui/icons/ViewList';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import { grey } from '@material-ui/core/colors';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -129,9 +128,19 @@ export default function PrimarySearchAppBar() {
         aria-label="questions"
         aria-controls="primary-question-menu"
         aria-haspopup="true">
-            <Link to="/questions"><QuestionAnswerIcon /></Link>
+            <Link to="/questions"><QuestionAnswerIcon style={{ color: grey[900] }}/></Link>
         </IconButton>
         Questionnaire
+      </MenuItem>
+      <MenuItem >
+        <IconButton 
+        color="inherit"
+        aria-label="survey"
+        aria-controls="primary-survey-menu"
+        aria-haspopup="true">
+            <Link to="/survey"><AssessmentIcon style={{ color: grey[900] }}/></Link>
+        </IconButton>
+        Survey
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -163,6 +172,9 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton>
               <Link to="/questions"><QuestionAnswerIcon style={{ color: grey[50] }}/></Link>
+            </IconButton>
+            <IconButton>
+              <Link to="/survey"><AssessmentIcon style={{ color: grey[50] }}/></Link>
             </IconButton>
             <IconButton
               edge="end"

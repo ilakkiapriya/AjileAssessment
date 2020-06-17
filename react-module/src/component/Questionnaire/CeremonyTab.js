@@ -1,7 +1,7 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import AddQues from './AddQues';
+import AddQuesDialog from './AddQuesDialog';
 import Button from '@material-ui/core/Button'
 
 
@@ -93,7 +93,7 @@ export default function CeremonyTab({ceremonyquestion}) {
           <Button color="primary" type="button"
           onClick={handleClickOpen}
           >Add Question</Button>
-          <AddQues open={open} handleClose={handleClose} />
+          <AddQuesDialog open={open} handleClose={handleClose} />
           </div>
         );
       }

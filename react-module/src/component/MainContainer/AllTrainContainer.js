@@ -1,6 +1,18 @@
 import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      elevation2: {
+        boxShadow: 'none'
+      },
+    },
+  },
+});
 
 export default function AllTrainContainer({propitems , onAdd, onChange}) {
   const [state, setState] = React.useState({
@@ -12,6 +24,7 @@ export default function AllTrainContainer({propitems , onAdd, onChange}) {
   });
 
   return (
+    <ThemeProvider theme={theme}>
     <MaterialTable
       title="Trains"
       columns={state.columns}
@@ -36,8 +49,10 @@ export default function AllTrainContainer({propitems , onAdd, onChange}) {
         }
       }}
       options={{
-        exportButton: true
+        exportButton: true,
+        paging: false
       }}
     />
+    </ThemeProvider>
   );
 }
