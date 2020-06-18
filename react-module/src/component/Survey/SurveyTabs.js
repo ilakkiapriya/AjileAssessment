@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SurveyTabs() {
+export default function SurveyTabs({eventItems,onAdd}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -93,10 +93,10 @@ export default function SurveyTabs() {
         </StyledTabs>
       </div>
       <TabPanel value={value} index={0}>
-        <SurveyResultTab />
+        <SurveyResultTab eventItems={eventItems}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <NewSurveyTab />
+        <NewSurveyTab onAdd={onAdd}/>
       </TabPanel>
     </div>
   );

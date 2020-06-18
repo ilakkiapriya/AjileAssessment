@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const EventSchema = mongoose.Schema({
     eventName:String,
     status: String,
-    surveyType: [String],
+    surveyType: String,
     targetedRoles:[String]
 });
 

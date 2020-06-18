@@ -97,15 +97,26 @@ class NewSurveyTab extends React.Component{
 
     }
 
-    handleCreate(){
-        return(
-        <div className="surveyResultText">
-            <Box display="flex" justifyContent="center" >
-                <p>Hi</p>
-            </Box>
+    handleCreate=(e)=>{
+        console.log("Handle create", e.target.surveyType.value);
+        
+        var updatedEventItems = {};
 
-        </div>
-        )
+        var targetedRolesValue = [];
+        var targetedRolesOptions = e.target.targetedRoles.options;
+            for (var i = 0, l = targetedRolesOptions.length; i < l; i++) {
+                if (targetedRolesOptions[i].selected) {
+                    targetedRolesValue.push(targetedRolesOptions[i].value);
+                }
+            }
+        
+        updatedEventItems.eventName = e.target.eventName.value;
+        updatedEventItems.surveyType = e.target.surveyType.value;
+        updatedEventItems.targetedRoles = targetedRolesValue;
+
+        
+        this.props.onAdd(updatedEventItems);
+        console.log("Successfully updated from NewSurvey")
     }
 
     render() {
@@ -114,10 +125,10 @@ class NewSurveyTab extends React.Component{
         return(
             <ThemeProvider theme={theme}>
                 <div className = "mysurveyform">
-                    <Form id={"myform"} >
+                    <Form id={"myform"} onSubmit={this.handleCreate}>
                         {items}
                         <Box display="flex" justifyContent="center" >
-                            <Button variant="contained" type="submit" startIcon={<CreateIcon/>} onClick={this.handleCreate}>
+                            <Button variant="contained" type={"submit"} startIcon={<CreateIcon/>} Form={"myform"} >
                                 Create
                             </Button>
                         </Box>
