@@ -15,6 +15,7 @@ class MainContainer extends React.Component {
     }
     this.updateTrainStateOnChange = this.updateTrainStateOnChange.bind(this);
     this.addTrainStateOnChange = this.addTrainStateOnChange.bind(this);
+    this.transformModelToUI = this.transformModelToUI.bind(this);
 }
 
 updateTrainStateOnChange (fullTrainData, changedTrainData)  {
@@ -70,17 +71,45 @@ fetch('http://localhost:3001/trains')
     .catch(console.log)
 }
 
+ 
+transformModelToUI() {
+    var ttrows = [];
+    var propItems = this.state.trainitems;
+    for ( const i in propItems ) {
+      var trainrow = {};
+      trainrow.id = propItems[i]._id;
+      trainrow.name = propItems[i].trainName;
+      trainrow.desc = propItems[i].trainDesc;
+      trainrow.owner = propItems[i].trainOwner;
+      ttrows.push(trainrow);
+      for ( const j in propItems[i].teams ) {
+        var teamrow = {};
+        teamrow.id = propItems[i].teams[j]._id;
+        teamrow.name = propItems[i].teams[j].teamName;
+        teamrow.desc = propItems[i].teams[j].teamDesc;
+        teamrow.owner = propItems[i].teams[j].teamOwner;
+        teamrow.parent_id = trainrow.id;
+        teamrow.parentName = trainrow.name;
+        ttrows.push(teamrow);
+      }
+    }
+    return ttrows;
+}
+
 render() {
+    
+  var ttrows = this.transformModelToUI();
+  console.log("ttrows",ttrows);
   return (
       <div className="maincontent" >
         
         <Switch>
             <Route path="/trains/:trainName/:teamName"  component={ props => (<AssociateContainer/>)} />
             <Route path="/trains/:trainName"  component={ props => (<AllTeamContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
-            <Route path="/trains" component={ props => (<NestedTrainContainer propitems={this.state.trainitems} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
+            <Route path="/trains" component={ props => (<NestedTrainContainer propitems={ttrows} onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
             <Route path="/questions" component={ props => (<AllQuestions/>)} />
             <Route path="/survey" component={ props => (<SurveyMainContainer/>)} />
-            <Route exact path="/" component={ props => (<NestedTrainContainer propitems={this.state.trainitems}  onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
+            <Route exact path="/" component={ props => (<NestedTrainContainer propitems={ttrows}  onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
         </Switch>
       </div>
 

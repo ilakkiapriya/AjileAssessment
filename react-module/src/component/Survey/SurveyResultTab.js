@@ -45,7 +45,7 @@ export default function SurveyResultTab({eventItems}){
     const [state, setState] = React.useState({
         columns: [
           { width:100,title: 'S.No', field: 'sno' ,filtering: false},
-          { width:200,title: 'Event Name', field: 'eventName' },
+          { width:200,title: 'Event Name', field: 'eventName',render: rowData => <Link to={`/survey/${rowData.eventName}`}>{rowData.eventName}</Link>},
           { title: 'Status', field: 'status'},
           {width:200,title: 'Result', field: 'result',render: rowData => <Icon>
                         <img src={Spider} height={25} width={25}/></Icon>},

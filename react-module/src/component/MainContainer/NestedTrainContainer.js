@@ -30,52 +30,41 @@ export default function NestedTrainContainer({propitems , onAdd, onChange}) {
       return <Link to={`/trains/${rowData.name}`}>{rowData.name}</Link>;
     }
   }
-  
-  function transformModelToUI() {
-      var ttrows = [];
-      for ( const i in propitems ) {
-        var trainrow = {};
-        trainrow.id = propitems[i]._id;
-        trainrow.name = propitems[i].trainName;
-        trainrow.desc = propitems[i].trainDesc;
-        trainrow.owner = propitems[i].trainOwner;
-        ttrows.push(trainrow);
-        for ( const j in propitems[i].teams ) {
-          var teamrow = {};
-          teamrow.id = propitems[i].teams[j]._id;
-          teamrow.name = propitems[i].teams[j].teamName;
-          teamrow.desc = propitems[i].teams[j].teamDesc;
-          teamrow.owner = propitems[i].teams[j].teamOwner;
-          teamrow.parent_id = trainrow.id;
-          teamrow.parentName = trainrow.name;
-          ttrows.push(teamrow);
-        }
-      }
-      return ttrows;
-  }
 
-  var ttrows = transformModelToUI();
+  function transformUIToModel(newData) {
+    var ttrow = {};
+    ttrow.trainName=newData.name;
+    ttrow.trainDesc=newData.desc;
+    ttrow.trainOwner=newData.owner;
+    return ttrow;
+}
+
+ 
+
 
   return (
     <ThemeProvider theme={theme}>
     <MaterialTable
       title="Trains"
       columns={state.columns}
-      data={ttrows}
+      data={propitems}
       parentChildData={(row, rows) => rows.find(a=> a.id===row.parent_id)}
       editable = {{
         onRowAdd: (newData) => 
         new Promise((resolve) => {
           setTimeout( () => {
               resolve();
-              onAdd(newData);
+              var trow=transformUIToModel(newData);
+              onAdd(trow);
           }, 600);
         }),
         onRowUpdate: (newData) => 
         new Promise((resolve) => {
           setTimeout( () => {
               resolve();
-              onChange(newData);
+              var trow=transformUIToModel(newData);
+              trow._id=newData.id;
+              onChange(trow);
           }, 600);
         }),
         onRowDelete: (newData) => {
