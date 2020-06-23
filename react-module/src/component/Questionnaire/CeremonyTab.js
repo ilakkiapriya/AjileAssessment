@@ -43,7 +43,7 @@ const theme = createMuiTheme({
 });
 
 
-export default function CeremonyTab({ceremonyquestion}) {
+export default function CeremonyTab({ceremonyquestion, onAdd}) {
 
   const [state, setState] = React.useState({
     columns: [
@@ -93,7 +93,7 @@ export default function CeremonyTab({ceremonyquestion}) {
           <Button color="primary" type="button"
           onClick={handleClickOpen}
           >Add Question</Button>
-          <AddQuesDialog open={open} handleClose={handleClose} />
+          <AddQuesDialog open={open} handleClose={handleClose} onAdd={onAdd}/>
           </div>
         );
       }

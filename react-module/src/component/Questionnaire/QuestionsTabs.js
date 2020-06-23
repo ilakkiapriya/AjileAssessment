@@ -98,7 +98,7 @@ function transformDataToUIModelForRoleQues() {
 function transformDataToUIModelForCeremonyQues() {
   var ceremonyquestion =[];
   for (const i in questionItems) {
-    var ceremonyparentag = "Ceremony Based";
+    var ceremonyparentag = "CeremonyBased";
     if ( questionItems[i].parentTag === ceremonyparentag ) {
       ceremonyquestion.push(questionItems[i]);
     }
@@ -122,7 +122,7 @@ var ceremonyquestions = transformDataToUIModelForCeremonyQues();
            <RoleTab rolequestion={rolequestions} onAdd={onAdd}/>
         </TabPanel>
         <TabPanel value={value} index={1}>
-        <CeremonyTab ceremonyquestion={ceremonyquestions}/>
+        <CeremonyTab ceremonyquestion={ceremonyquestions} onAdd={onAdd}/>
         </TabPanel>
     </div>
   );
