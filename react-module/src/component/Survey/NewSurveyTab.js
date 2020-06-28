@@ -92,16 +92,12 @@ class NewSurveyTab extends React.Component{
          
                  }
             });
-            console.log("Items", items);
         return items;
 
     }
 
     handleCreate=(e)=>{
-        console.log("Handle create", e.target.surveyType.value);
-        
         var updatedEventItems = {};
-
         var targetedRolesValue = [];
         var targetedRolesOptions = e.target.targetedRoles.options;
             for (var i = 0, l = targetedRolesOptions.length; i < l; i++) {

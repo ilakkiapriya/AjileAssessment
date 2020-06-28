@@ -67,7 +67,6 @@ export default function RoleTab({rolequestion, onAdd}) {
 
   function transformModelToUI() {
     var roletbRows = [];
-    console.log("roleQues",rolequestion);
     let j=0;
 
     for ( const i in rolequestion ) {
@@ -110,7 +109,8 @@ export default function RoleTab({rolequestion, onAdd}) {
       }}
       options={{
         filtering: true,
-        search:false
+        search:false,
+        paging: false
       }}
     />
     </ThemeProvider>

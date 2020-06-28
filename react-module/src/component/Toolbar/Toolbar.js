@@ -118,7 +118,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton color="inherit">
-            <HomeIcon /> 
+        <Link to="/"><HomeIcon style={{ color: grey[900] }}/></Link> 
         </IconButton>
         Home
       </MenuItem>
@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar >
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography component="span" className={classes.title} variant="h6" noWrap>
             Agile Assessment
           </Typography>
          

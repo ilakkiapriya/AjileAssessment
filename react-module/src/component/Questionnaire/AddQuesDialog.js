@@ -74,7 +74,6 @@ class AddQuesDialog extends React.Component {
     
 
     handleChange(e) {
-        console.log("Event target value",e.target.value );
         if(e.target.value === "Rating") {
             var newitems = [];
             var i;
@@ -141,7 +140,6 @@ class AddQuesDialog extends React.Component {
          
                  }
             });
-            console.log("Items", items);
         return items;
 
     }
@@ -157,30 +155,28 @@ class AddQuesDialog extends React.Component {
                     taggedToValue.push(taggedToOptions[i].value);
                 }
             }
-
-        var rateDescVal = [];
-            var ratedesc1 = e.target.ratedesc1.value;
-            var ratedesc2 = e.target.ratedesc2.value;
-            var ratedesc3 = e.target.ratedesc3.value;
-            var ratedesc4 = e.target.ratedesc4.value;
-            var ratedesc5 = e.target.ratedesc5.value;
-        
-            rateDescVal.push(ratedesc1);
-            rateDescVal.push(ratedesc2);
-            rateDescVal.push(ratedesc3);
-            rateDescVal.push(ratedesc4);
-            rateDescVal.push(ratedesc5);
-            
+            if ( e.target.qtype.value === "Rating" ) {
+                    var rateDescVal = [];
+                    var ratedesc1 = e.target.ratedesc1.value;
+                    var ratedesc2 = e.target.ratedesc2.value;
+                    var ratedesc3 = e.target.ratedesc3.value;
+                    var ratedesc4 = e.target.ratedesc4.value;
+                    var ratedesc5 = e.target.ratedesc5.value;
+                
+                    rateDescVal.push(ratedesc1);
+                    rateDescVal.push(ratedesc2);
+                    rateDescVal.push(ratedesc3);
+                    rateDescVal.push(ratedesc4);
+                    rateDescVal.push(ratedesc5);
+                    updatedQItems.rateDescription = rateDescVal;
+            }
         updatedQItems.category = e.target.category.value;
         updatedQItems.parentTag = e.target.parentTag.value;
         updatedQItems.qtype = e.target.qtype.value;
         updatedQItems.taggedTo = taggedToValue;
-        updatedQItems.rateDescription = rateDescVal;
         updatedQItems.title = e.target.title.value;
-        //newQuestionItems.push(updatedQItems);
-        console.log("NewQuesItems", newQuestionItems);
         this.props.onAdd(updatedQItems);
-        console.log("Successfully updated from Addques")
+        console.log("Successfully updated from Addques");
         this.props.handleClose(true);
     }
      

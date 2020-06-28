@@ -67,13 +67,16 @@ export default function CeremonyTab({ceremonyquestion, onAdd}) {
 
   function transformModelToUI() {
     var ceremonytbRows = [];
-    console.log("CeremonyQues",ceremonyquestion);
     let j=0;
 
     for ( const i in ceremonyquestion ) {
       var ceremonybasedRow = {};
       ceremonybasedRow.sno = ++j;
+      
       ceremonybasedRow.ceremonyType = ceremonyquestion[i].taggedTo;
+      if(ceremonybasedRow.ceremonyType.length >1){
+        ceremonybasedRow.ceremonyType = ceremonybasedRow.ceremonyType.join(" , ");
+      }
       ceremonybasedRow.question = ceremonyquestion[i].title;
       ceremonybasedRow.questionType = ceremonyquestion[i].qtype;
       ceremonytbRows.push(ceremonybasedRow);
@@ -107,7 +110,8 @@ export default function CeremonyTab({ceremonyquestion, onAdd}) {
       }}
       options={{
         filtering: true,
-        search:false
+        search:false,
+        paging: false
       }}
     />
     </ThemeProvider>

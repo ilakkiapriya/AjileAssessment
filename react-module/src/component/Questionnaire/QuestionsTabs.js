@@ -23,7 +23,7 @@ function TabPanel(props) {
       >
         {value === index && (
           <Box p={3}>
-            <Typography>{children}</Typography>
+            <Typography component="span">{children}</Typography>
           </Box>
         )}
       </div>
@@ -82,7 +82,6 @@ export default function QuestionsTabs({questionItems, onAdd}) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  console.log("roledata data is " , questionItems);
 
 function transformDataToUIModelForRoleQues() {
   var rolequestion =[];

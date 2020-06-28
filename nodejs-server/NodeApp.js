@@ -13,11 +13,14 @@ const trainrouter = require('./routes/Trainrouter');
 const questionrouter = require('./routes/Questionrouter');
 const associaterouter = require('./routes/Associaterouter');
 const eventrouter = require('./routes/Eventrouter');
+const surveyrouter = require('./routes/Surveyrouter');
 
 app.use("/", trainrouter);
 app.use("/questions", questionrouter);
 app.use("/associates", associaterouter);
 app.use("/events",eventrouter);
+app.use("/survey",surveyrouter);
+
 
  
 mongoose.connect(process.env.DB_CONNECTION,{ useNewUrlParser: true },() =>

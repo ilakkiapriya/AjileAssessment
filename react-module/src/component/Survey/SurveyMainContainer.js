@@ -1,5 +1,7 @@
 import React from 'react';
 import SurveyTabs from './SurveyTabs';
+import EventContainer from './SurveyEventAssessment';
+import { Route, Switch } from 'react-router-dom';
 
 
 class SurveyMainContainer extends React.Component {
@@ -42,7 +44,10 @@ class SurveyMainContainer extends React.Component {
  
   render() {
         return (
-          <div><SurveyTabs eventItems={this.state.eventitems} onAdd={this.addEventsOnCreate}/></div>
+          <div>
+            <SurveyTabs eventItems={this.state.eventitems} onAdd={this.addEventsOnCreate}/>
+           
+            </div>
         );
   }
 }

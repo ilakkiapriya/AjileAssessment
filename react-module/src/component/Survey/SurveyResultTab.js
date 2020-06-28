@@ -5,6 +5,8 @@ import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import { Icon } from "@material-ui/core";
 import Spider from './spider-chart.svg'
 
+import { useParams} from "react-router";
+
 const theme = createMuiTheme({
     overrides: {
       MuiTableRow: {
@@ -42,6 +44,7 @@ const theme = createMuiTheme({
   });
 
 export default function SurveyResultTab({eventItems}){
+  
     const [state, setState] = React.useState({
         columns: [
           { width:100,title: 'S.No', field: 'sno' ,filtering: false},
@@ -54,9 +57,9 @@ export default function SurveyResultTab({eventItems}){
         ]
       });
 
+      let params = useParams();
       function transformModelToUI() {
         var eventRows = [];
-        console.log("eventItems",eventItems);
         let j=0;
     
         for ( const i in eventItems ) {
@@ -84,7 +87,8 @@ export default function SurveyResultTab({eventItems}){
       data={eventRows}
       options={{
         filtering: true,
-        search:false
+        search:false,
+        paging: false
       }}
     />
     </ThemeProvider>

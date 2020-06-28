@@ -41,7 +41,7 @@ export default function AgileBreadCrumbs({bcprops}) {
         </Link>);
     }else {
       return(
-      <Typography color="textPrimary" className={classes.link}>
+      <Typography component="span" color="textPrimary" className={classes.link}>
         <GrainIcon className={classes.icon} />
         {bc.name}
       </Typography>
