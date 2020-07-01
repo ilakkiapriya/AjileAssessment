@@ -7,6 +7,7 @@ import AllQuestions from "../Questionnaire/AllQuestions";
 import SurveyMainContainer from '../Survey/SurveyMainContainer';
 import AllTeamContainer from './AllTeamContainer'
 import SurveyEventAssessment from '../Survey/SurveyEventAssessment';
+import SpiderGraphContainer from '../Survey/SpiderGraphContainer';
 class MainContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -111,6 +112,7 @@ render() {
             <Route path="/questions" component={ props => (<AllQuestions/>)} />
             <Route path="/survey/:eventName" component={ props => (<SurveyEventAssessment/>)} />
             <Route path="/survey" component={ props => (<SurveyMainContainer/>)} />
+            <Route path="/spidergraph" component={ props => (<SpiderGraphContainer/>)} />
             <Route exact path="/" component={ props => (<NestedTrainContainer propitems={ttrows}  onAdd={this.addTrainStateOnChange} onChange={this.updateTrainStateOnChange}/>)} />
         </Switch>
       </div>

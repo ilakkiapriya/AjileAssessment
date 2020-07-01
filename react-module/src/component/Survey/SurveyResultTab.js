@@ -2,7 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import {Link} from 'react-router-dom';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { Icon } from "@material-ui/core";
+import IconButton from '@material-ui/core/IconButton';
 import Spider from './spider-chart.svg'
 
 import { useParams} from "react-router";
@@ -51,8 +51,12 @@ export default function SurveyResultTab({eventItems}){
           { width:200,title: 'Event Name', field: 'eventName',render: rowData => <Link to={`/survey/${rowData.eventName}`}>{rowData.eventName}</Link>},
           { title: 'Status', field: 'status'},
           {title: 'Roles', field: 'targetRoles'},
-          {width:200,title: 'Result', field: 'result',render: rowData => <Icon>
-                        <img src={Spider} height={25} width={25}/></Icon>},
+          {width:200,title: 'Result', field: 'result',render: rowData => 
+          <IconButton>
+            <Link to="/spidergraph">
+              <img src={Spider} height={25} width={25}/>
+            </Link>
+          </IconButton>},
           {width:200,title: 'No. Of Submission', field: 'noOfSubmission'},
         ]
       });
