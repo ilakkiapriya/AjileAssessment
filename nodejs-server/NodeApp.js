@@ -27,11 +27,11 @@ const associaterouter = require('./routes/Associaterouter');
 const eventrouter = require('./routes/Eventrouter');
 const surveyrouter = require('./routes/Surveyrouter');
 
-app.use("/", trainrouter);
-app.use("/questions", questionrouter);
-app.use("/associates", associaterouter);
-app.use("/events",eventrouter);
-app.use("/survey",surveyrouter);
+app.use("/rest/trains", trainrouter);
+app.use("/rest/questions", questionrouter);
+app.use("/rest/associates", associaterouter);
+app.use("/rest/events",eventrouter);
+app.use("/rest/survey",surveyrouter);
 
 
  

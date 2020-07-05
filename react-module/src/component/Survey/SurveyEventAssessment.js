@@ -26,7 +26,7 @@ class SurveyEventAssessment extends React.Component {
 
 
   componentDidMount() {
-    fetch('http://localhost:3001/survey/'+this.props.match.params.eventName)
+    fetch( window.location.origin +  '/rest/survey/'+this.props.match.params.eventName)
         .then(res => res.json())
         .then((data) => {
           
@@ -56,7 +56,7 @@ class SurveyEventAssessment extends React.Component {
           headers: {'Content-Type': 'application/json' },
           body: JSON.stringify(surveyresult)
       };
-      fetch('http://localhost:3001/survey/'+this.state.eventName, requestOptions)
+      fetch(window.location.origin + '/rest/survey/'+this.state.eventName, requestOptions)
       .then(res => res.json())
       .then((data) => {
           console.log("Survey post is successfully sent and response is received ", data);
