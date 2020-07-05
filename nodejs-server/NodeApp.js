@@ -8,6 +8,18 @@ const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json());
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/ping', function (req, res) {
+   return res.send('pong');
+  });
+  
+  app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+  
+
+
 //import routers
 const trainrouter = require('./routes/Trainrouter');
 const questionrouter = require('./routes/Questionrouter');
