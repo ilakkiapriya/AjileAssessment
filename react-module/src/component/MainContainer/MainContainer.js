@@ -31,7 +31,7 @@ updateTrainStateOnChange (fullTrainData, changedTrainData)  {
     };
 
     console.log("Train id is " , fullTrainData._id);
-    const patchurl = 'http://localhost:3001/trains/' +fullTrainData._id; 
+    const patchurl = window.location.origin + '/rest/trains/' +fullTrainData._id; 
     fetch(patchurl, requestOptions)
     .then(res => res.json())
     .then((data) => {
@@ -54,7 +54,7 @@ addTrainStateOnChange (newTrainModelItem)  {
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(newTrainModelItem)
     };
-    fetch('http://localhost:3001/trains', requestOptions)
+    fetch( window.location.origin + '/rest/trains', requestOptions)
     .then(res => res.json())
     .then((data) => {
         console.log("Post is successfully sent and response is received ", data);
@@ -66,7 +66,7 @@ addTrainStateOnChange (newTrainModelItem)  {
 }
 
 componentDidMount() {
-fetch('http://localhost:3001/trains')
+fetch(window.location.origin + '/rest/trains')
     .then(res => res.json())
     .then((data) => {
       this.setState({ trainitems: data })

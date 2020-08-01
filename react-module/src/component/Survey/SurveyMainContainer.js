@@ -15,7 +15,7 @@ class SurveyMainContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/events')
+    fetch( window.location.origin +  '/rest/events')
         .then(res => res.json())
         .then((data) => {
           console.log("Event data is " , data);
@@ -31,7 +31,7 @@ class SurveyMainContainer extends React.Component {
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(newEventModelItem)
     };
-    fetch('http://localhost:3001/events', requestOptions)
+    fetch(window.location.origin + '/rest/events', requestOptions)
     .then(res => res.json())
     .then((data) => {
         console.log("Post is successfully sent and response is received ", data);

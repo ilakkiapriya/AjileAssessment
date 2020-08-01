@@ -33,7 +33,7 @@ export default function AssociateContainer() {
   });
 
   React.useEffect(() => {
-    fetch('http://localhost:3001/associates')
+    fetch( window.location.origin + '/rest/associates')
     .then(res => res.json())
     .then((data) => {
       var valassociaterows = [];
@@ -65,7 +65,7 @@ export default function AssociateContainer() {
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(newAssociateItem)
     };
-    fetch('http://localhost:3001/associates', requestOptions)
+    fetch(window.location.origin + '/rest/associates', requestOptions)
     .then(res => res.json())
     .then((data) => {
         console.log("Post is successfully sent and response is received ", data);

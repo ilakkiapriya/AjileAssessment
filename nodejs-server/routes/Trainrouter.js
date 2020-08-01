@@ -2,12 +2,8 @@ const express = require('express');
 const Trainrouter = express.Router();
 const TrainsModel = require('../models/TrainCollection');
 
-Trainrouter.get('/', (req,res) => {
-    console.log("Home link is clicked");
-    res.send('We are on home');
-});
 
-Trainrouter.get('/trains', async (req,res) => {
+Trainrouter.get('/', async (req,res) => {
     console.log("GET on trains is received on the server" , req.body);
 
     try {
@@ -20,7 +16,7 @@ Trainrouter.get('/trains', async (req,res) => {
     }
 });
 
-Trainrouter.get('/trains/:trainId', async (req, res) => {
+Trainrouter.get('/:trainId', async (req, res) => {
     try {
         const train = await TrainsModel.findById(req.params.trainId);
         res.json(train);
@@ -29,7 +25,7 @@ Trainrouter.get('/trains/:trainId', async (req, res) => {
     }
 });
 
-Trainrouter.post('/trains', (req,res) => {
+Trainrouter.post('/', (req,res) => {
     const train = new TrainsModel ({
             trainName: req.body.trainName,
             trainDesc: req.body.trainDesc,
@@ -43,7 +39,7 @@ Trainrouter.post('/trains', (req,res) => {
     console.log("POST is completed on the server" , req.body);
 });
 
-Trainrouter.patch('/trains/:trainId', async (req,res) => {
+Trainrouter.patch('/:trainId', async (req,res) => {
     try {
         console.log("Request body is " + req.body);
         const updateTrain = await TrainsModel.updateOne( { _id: req.params.trainId}, 

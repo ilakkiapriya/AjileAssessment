@@ -13,7 +13,7 @@ class AllQuestions extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/questions')
+    fetch( window.location.origin +  '/rest/questions')
         .then(res => res.json())
         .then((data) => {
           console.log("question data is " , data);
@@ -29,7 +29,7 @@ class AllQuestions extends React.Component {
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify(newQuestionModelItem)
     };
-    fetch('http://localhost:3001/questions', requestOptions)
+    fetch(window.location.origin +   '/rest/questions', requestOptions)
     .then(res => res.json())
     .then((data) => {
         console.log("Post is successfully sent and response is received ", data);
