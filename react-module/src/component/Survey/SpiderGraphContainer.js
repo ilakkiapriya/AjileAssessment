@@ -9,13 +9,13 @@ class SpiderGraphConatiner extends React.Component {
       
         series: [{
           name: 'Series 1',
-          data: [80, 50, 30, 40, 100, 20],
+          data: [80, 50, 30, 40, 100],
         }, {
           name: 'Series 2',
-          data: [20, 30, 40, 80, 20, 80],
+          data: [20, 30, 40, 80, 20],
         }, {
           name: 'Series 3',
-          data: [44, 76, 78, 13, 43, 10],
+          data: [44, 76, 78, 13, 43],
         }],
         options: {
           chart: {
@@ -41,7 +41,7 @@ class SpiderGraphConatiner extends React.Component {
             size: 0
           },
           xaxis: {
-            categories: ['2011', '2012', '2013', '2014', '2015', '2016']
+            categories: ['2011', '2012', '2013', '2014', '2015']
           }
         },
       
