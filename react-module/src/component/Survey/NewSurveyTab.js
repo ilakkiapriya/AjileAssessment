@@ -32,7 +32,7 @@ class NewSurveyTab extends React.Component{
                     controlId: "targetedRoles",
                     label: "Targeted Roles",
                     type: "select-multiple",
-                    options: ["Developer", "Tester", "Manager"]
+                    options: ["Developer", "Tester", "Manager", "ALL"]
                 },
                 {
                     controlId: "eventName",

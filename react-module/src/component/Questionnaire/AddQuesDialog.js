@@ -45,7 +45,7 @@ class AddQuesDialog extends React.Component {
                     controlId: "taggedTo",
                     label: "Child Tag",
                     type: "select-multiple",
-                    options: ["Developer", "Tester", "Manager"]
+                    options: ["Developer", "Tester", "Manager", "ALL"]
                 },
                 {
                     controlId: "category",
